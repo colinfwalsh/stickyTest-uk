@@ -48,12 +48,16 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="7R9-Cv-eps" secondAttribute="trailing" id="Jd2-Pk-zIX"/>
                                     <constraint firstAttribute="height" constant="285" id="dJA-Es-RXc"/>
                                     <constraint firstAttribute="bottom" secondItem="7R9-Cv-eps" secondAttribute="bottom" id="iAu-gj-kIU"/>
                                     <constraint firstItem="7R9-Cv-eps" firstAttribute="leading" secondItem="wmh-vT-d6x" secondAttribute="leading" id="ioo-wV-i7k"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TYz-eH-cLQ" appends="YES" id="ifO-dj-cgL"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3zO-xh-tja">
                                 <rect key="frame" x="0.0" y="329" width="414" height="533"/>
@@ -97,10 +101,16 @@
                     <connections>
                         <outlet property="header" destination="wmh-vT-d6x" id="MiJ-sm-Ifo"/>
                         <outlet property="headerHeight" destination="dJA-Es-RXc" id="bXd-dA-31N"/>
+                        <outlet property="headerTopConstraint" destination="9EO-tp-bRJ" id="dcl-7l-8mi"/>
                         <outlet property="tableView" destination="3zO-xh-tja" id="zuI-Jk-DAH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="TYz-eH-cLQ">
+                    <connections>
+                        <action selector="touchesBegan:" destination="BYZ-38-t0r" id="abn-5C-PTb"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="13.043478260869566" y="103.79464285714285"/>
         </scene>
