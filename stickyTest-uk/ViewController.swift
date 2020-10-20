@@ -66,10 +66,18 @@ class ViewController: UIViewController {
         
         tableView.showsVerticalScrollIndicator = false
         
-        kvoToken = observe(\.isDisplayed) { value in
-            print(value)
+        kvoToken = observe(\.isDisplayed) { [weak self] value in
+            guard let self = self else {return}
+            
+            let updatedBottom = 85 - self.updatedOffset
+            
+            if value == true && updatedBottom > 0 {
+                self.popDownBottom.constant = 185
+                
+            } else if value == false && Int(updatedBottom) <= 0 {
+                self.popDownBottom.constant = 0
+            }
         }
-        
     }
     
     @IBAction func touchesBegan(_ sender: UIPanGestureRecognizer) {
@@ -127,11 +135,11 @@ extension ViewController: UITableViewDelegate {
         updatedOffset = scrollView.contentOffset.y
         let updatedHeight = 0 - updatedOffset
         
-        let updatedBottom = 85 - updatedOffset
-       
-        popDown.isHidden = 85 - updatedOffset >= 45
-        popDown.backgroundColor = UIColor(white: 1.0, alpha: (1.0 - (updatedBottom + 20)/100))
-        popDownBottom.constant = updatedBottom <= 0 ? 0 : updatedBottom
+        if updatedOffset <= 0 {
+            isDisplayed = true
+        } else {
+            isDisplayed = false
+        }
         
         updateHeader(with: updatedHeight)
     }
