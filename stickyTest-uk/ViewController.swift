@@ -127,8 +127,9 @@ extension ViewController: UITableViewDelegate {
         updatedOffset = scrollView.contentOffset.y
         let updatedHeight = 0 - updatedOffset
         
-        let updatedBottom = 185 - updatedOffset
+        let updatedBottom = 85 - updatedOffset
        
+        popDown.isHidden = 85 - updatedOffset >= 45
         popDown.backgroundColor = UIColor(white: 1.0, alpha: (1.0 - (updatedBottom + 20)/100))
         popDownBottom.constant = updatedBottom <= 0 ? 0 : updatedBottom
         
@@ -139,7 +140,7 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController {
     func updateHeader(with updatedHeight: CGFloat) {
-        self.headerTopConstraint.constant = updatedHeight <= -185 ? -185 : updatedHeight >= 0 ? 0 : updatedHeight
+        self.headerTopConstraint.constant = updatedHeight <= -85 ? -85 : updatedHeight >= 0 ? 0 : updatedHeight
         self.header.layoutIfNeeded()
     }
 }
