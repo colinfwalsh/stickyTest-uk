@@ -16,6 +16,7 @@
 		D557CB0E253DCE650000E5D6 /* stickyTest_ukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557CB0D253DCE650000E5D6 /* stickyTest_ukTests.swift */; };
 		D557CB19253DCE650000E5D6 /* stickyTest_ukUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557CB18253DCE650000E5D6 /* stickyTest_ukUITests.swift */; };
 		D557CB2A253DD5190000E5D6 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557CB29253DD5190000E5D6 /* DefaultTableViewCell.swift */; };
+		D5E66D0B253F4EB900C23566 /* KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E66D0A253F4EB900C23566 /* KVO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D557CB18253DCE650000E5D6 /* stickyTest_ukUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stickyTest_ukUITests.swift; sourceTree = "<group>"; };
 		D557CB1A253DCE650000E5D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D557CB29253DD5190000E5D6 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
+		D5E66D0A253F4EB900C23566 /* KVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				D557CAF8253DCE620000E5D6 /* SceneDelegate.swift */,
 				D557CAFA253DCE620000E5D6 /* ViewController.swift */,
 				D557CAFC253DCE620000E5D6 /* Main.storyboard */,
+				D5E66D0A253F4EB900C23566 /* KVO.swift */,
 				D557CB29253DD5190000E5D6 /* DefaultTableViewCell.swift */,
 				D557CAFF253DCE640000E5D6 /* Assets.xcassets */,
 				D557CB01253DCE640000E5D6 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D557CAFB253DCE620000E5D6 /* ViewController.swift in Sources */,
+				D5E66D0B253F4EB900C23566 /* KVO.swift in Sources */,
 				D557CB2A253DD5190000E5D6 /* DefaultTableViewCell.swift in Sources */,
 				D557CAF7253DCE620000E5D6 /* AppDelegate.swift in Sources */,
 				D557CAF9253DCE620000E5D6 /* SceneDelegate.swift in Sources */,

@@ -7,16 +7,36 @@
 
 import UIKit
 
+enum CellTypes {
+    case header(HeaderViewModel)
+    case item(ViewModel)
+}
+
+class HeaderViewModel {
+    let title = "Title"
+}
+
+class ViewModel {
+    let example = "Example"
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var popDown: UIView!
+    @IBOutlet weak var popDownBottom: NSLayoutConstraint!
     
     private let sectionArr = ["Blah", "Blah", "Blah", "Blah",
                               "Blah", "Blah", "Blah", "Blah",
                               "Blah", "Blah", "Blah", "Blah"]
+    
+    private let enumArr: [CellTypes] = [.header(HeaderViewModel()),
+                                        .item(ViewModel()),
+                                        .header(HeaderViewModel()),
+                                        .item(ViewModel())]
     
     private let sectionDict = [0 : ["Blah", "Blah"],
                                1 : ["Blah", "Blah"],
@@ -31,6 +51,13 @@ class ViewController: UIViewController {
                                10 : ["Blah", "Blah"]]
     
     private var updatedOffset: CGFloat = 0.0
+    @objc dynamic private var isDisplayed = false
+        
+    fileprivate var kvoToken: NSKeyValueObservation?
+
+    deinit {
+        kvoToken?.invalidate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +65,10 @@ class ViewController: UIViewController {
         tableView.delegate = self
         
         tableView.showsVerticalScrollIndicator = false
+        
+        kvoToken = observe(\.isDisplayed) { value in
+            print(value)
+        }
         
     }
     
@@ -94,23 +125,21 @@ extension ViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         updatedOffset = scrollView.contentOffset.y
-        let updatedHeight = headerTopConstraint.constant - updatedOffset
+        let updatedHeight = 0 - updatedOffset
         
-        print(updatedHeight)
-        UIView.animate(withDuration: 0.2) {[weak self] in
-            guard let self = self
-            else {return}
-            
-            self.updateHeader(with: updatedHeight)
-            scrollView.layoutIfNeeded()
-        }
+        let updatedBottom = 185 - updatedOffset
+       
+        popDown.backgroundColor = UIColor(white: 1.0, alpha: (1.0 - (updatedBottom + 20)/100))
+        popDownBottom.constant = updatedBottom <= 0 ? 0 : updatedBottom
+        
+        updateHeader(with: updatedHeight)
     }
     
 }
 
 extension ViewController {
     func updateHeader(with updatedHeight: CGFloat) {
-        self.headerTopConstraint.constant = updatedHeight <= -235 ? -235 : updatedHeight >= -100 ? 0 : updatedHeight
+        self.headerTopConstraint.constant = updatedHeight <= -185 ? -185 : updatedHeight >= 0 ? 0 : updatedHeight
         self.header.layoutIfNeeded()
     }
 }

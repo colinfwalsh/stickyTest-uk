@@ -59,6 +59,13 @@
                                     <outletCollection property="gestureRecognizers" destination="TYz-eH-cLQ" appends="YES" id="ifO-dj-cgL"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yj-Q5-iuj" userLabel="PopDown">
+                                <rect key="frame" x="0.0" y="-61" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NWv-EI-VQk"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3zO-xh-tja">
                                 <rect key="frame" x="0.0" y="329" width="414" height="533"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -90,18 +97,23 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3zO-xh-tja" firstAttribute="top" secondItem="wmh-vT-d6x" secondAttribute="bottom" id="8NE-Cl-1Jg"/>
+                            <constraint firstItem="0yj-Q5-iuj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ri-6b-w2t"/>
                             <constraint firstItem="wmh-vT-d6x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9EO-tp-bRJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0yj-Q5-iuj" secondAttribute="trailing" id="DE7-bF-UAz"/>
                             <constraint firstItem="3zO-xh-tja" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MLn-PV-XvK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3zO-xh-tja" secondAttribute="trailing" id="SwM-6s-gbe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3zO-xh-tja" secondAttribute="bottom" id="eMS-vy-YhL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wmh-vT-d6x" secondAttribute="trailing" id="gfd-NA-QMi"/>
                             <constraint firstItem="wmh-vT-d6x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o4D-AY-dQl"/>
+                            <constraint firstItem="7R9-Cv-eps" firstAttribute="top" secondItem="0yj-Q5-iuj" secondAttribute="bottom" constant="285" id="ysH-Oi-z7Z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="header" destination="wmh-vT-d6x" id="MiJ-sm-Ifo"/>
                         <outlet property="headerHeight" destination="dJA-Es-RXc" id="bXd-dA-31N"/>
                         <outlet property="headerTopConstraint" destination="9EO-tp-bRJ" id="dcl-7l-8mi"/>
+                        <outlet property="popDown" destination="0yj-Q5-iuj" id="GMc-u7-UjS"/>
+                        <outlet property="popDownBottom" destination="ysH-Oi-z7Z" id="j0J-zv-AeL"/>
                         <outlet property="tableView" destination="3zO-xh-tja" id="zuI-Jk-DAH"/>
                     </connections>
                 </viewController>
@@ -118,6 +130,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
