@@ -52,9 +52,9 @@ class ViewController: UIViewController {
     
     private var updatedOffset: CGFloat = 0.0
     @objc dynamic private var isDisplayed = false
-        
+    
     fileprivate var kvoToken: NSKeyValueObservation?
-
+    
     deinit {
         kvoToken?.invalidate()
     }
@@ -72,12 +72,18 @@ class ViewController: UIViewController {
             let updatedBottom = 85 - self.updatedOffset
             
             if value == true && updatedBottom > 0 {
-                self.popDownBottom.constant = 185
-                
-            } else if value == false && Int(updatedBottom) <= 0 {
-                self.popDownBottom.constant = 0
+                self.animatePopDown(with: 185)
+            } else if value == false && updatedBottom <= 0 {
+                self.animatePopDown(with: 0.0)
             }
         }
+    }
+    
+    func animatePopDown(with constraintContstant: CGFloat) {
+        self.popDownBottom.constant = constraintContstant
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        } 
     }
     
     @IBAction func touchesBegan(_ sender: UIPanGestureRecognizer) {
@@ -135,10 +141,10 @@ extension ViewController: UITableViewDelegate {
         updatedOffset = scrollView.contentOffset.y
         let updatedHeight = 0 - updatedOffset
         
-        if updatedOffset <= 0 {
-            isDisplayed = true
-        } else {
+        if updatedOffset > 95 && isDisplayed == true {
             isDisplayed = false
+        } else if updatedOffset <= 80 && isDisplayed == false {
+            isDisplayed = true
         }
         
         updateHeader(with: updatedHeight)
